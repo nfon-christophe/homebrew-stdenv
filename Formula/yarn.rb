@@ -1,21 +1,4 @@
-class NodeRequirement < Requirement
-  fatal true
-
-  def initialize(tags)
-    @with_node = tags.shift
-    super(tags)
-  end
-
-  # If `which("node")` returns a value, or we built `--with-node`, then we're ok
-  satisfy(:build_env => false) { which("node") || @with_node }
-
-  def message; <<~EOS
-    node is required;
-    install it into your path (via NVM or otherwise) or re-run:
-      brew install gfguthrie/stdenv/yarn --with-node
-  EOS
-  end
-end
+require_relative "../std_requirements/std_node_requirement"
 
 # https://github.com/Homebrew/homebrew-core/blob/master/Formula/yarn.rb
 class Yarn < Formula
@@ -27,13 +10,8 @@ class Yarn < Formula
 
   bottle :unneeded
 
-  # Use the std environment, so we have access to our PATH
-  env :std
-
-  # Make the node dependency optional
-  depends_on "node" => :optional
-  # Pass whether we're building with the node option to our Requirement
-  depends_on NodeRequirement => build.with?("node")
+  depends_on "node" => :optional # Make node optional so it's not installed by default & we get --with-node
+  depends_on StdNodeRequirement => build.with?("node") # StdNodeRequirement looks for node in std environment
 
   conflicts_with "hadoop", :because => "both install `yarn` binaries"
 
