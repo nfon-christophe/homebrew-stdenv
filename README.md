@@ -7,9 +7,11 @@ brew install gfguthrie/stdenv/<formula>
 ```
 
 ## Supported Dependencies
+- [go](https://github.com/gfguthrie/homebrew-stdenv/blob/master/std_requirements/std_go_requirement.rb)
 - [node](https://github.com/gfguthrie/homebrew-stdenv/blob/master/std_requirements/std_node_requirement.rb)
 
 ## Formulae
+- [opa](https://github.com/gfguthrie/homebrew-stdenv/blob/master/Formula/opa.rb)
 - [yarn](https://github.com/gfguthrie/homebrew-stdenv/blob/master/Formula/yarn.rb)
 
 ## Contributions
