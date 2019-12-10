@@ -12,6 +12,7 @@ brew install gfguthrie/stdenv/<formula>
 
 ## Formulae
 - [opa](https://github.com/gfguthrie/homebrew-stdenv/blob/master/Formula/opa.rb)
+- [svgo](https://github.com/gfguthrie/homebrew-stdenv/blob/master/Formula/svgo.rb)
 - [yarn](https://github.com/gfguthrie/homebrew-stdenv/blob/master/Formula/yarn.rb)
 
 ## Contributions
