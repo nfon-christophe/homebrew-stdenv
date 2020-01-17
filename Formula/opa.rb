@@ -4,30 +4,24 @@ require_relative "../std_requirements/std_go_requirement"
 class Opa < Formula
   desc "Open source, general-purpose policy engine"
   homepage "https://www.openpolicyagent.org"
-  url "https://github.com/open-policy-agent/opa/archive/v0.15.1.tar.gz"
-  sha256 "b51fd9ba0d99d084c01ceace50cd31b900a12f61dd9d6c6fb5ce7f026a8556b2"
+  url "https://github.com/open-policy-agent/opa/archive/v0.16.1.tar.gz"
+  sha256 "2251b905e7e6c416b71800bd779b184bce2302bd4655666c6e35e6d5c0e274b9"
 
   bottle do
     root_url "https://homebrew.bintray.com/bottles" # https://github.com/Homebrew/brew/issues/6059
     cellar :any_skip_relocation
-    sha256 "37d22a6a5edbb5ed64ce8bd154f284a872c6b8cafe4becb64b6cfcfd824879f1" => :catalina
-    sha256 "2b27039e065eb1f89b6dac2fc2a57506d7c069c72d3d04daf41f02d6907669f2" => :mojave
-    sha256 "57651d6c3244f6eb86696da89b9c64737e6e0c4ddee8616bf71d262feb4d42d2" => :high_sierra
+    sha256 "12a49903df2c7c51983f7a6b4b8eeb64c14eb251086687829001ff482f5f7228" => :catalina
+    sha256 "e4f845f19f7e7018dd53a361f30745c8a21bc17444e7214bbba2cd5c8720080c" => :mojave
+    sha256 "598ec6a006c15dba209e865ac34806da37716698fc05a6ce6dfd5f11acfaee57" => :high_sierra
   end
 
   depends_on "go" => [:build, :optional] # Make go optional so it's not installed by default & we get --with-go
   depends_on StdGoRequirement => [build.with?("go"), :build] # StdGoRequirement looks for go in std environment
 
   def install
-    ENV["GOPATH"] = buildpath
-    (buildpath/"src/github.com/open-policy-agent/opa").install buildpath.children
-
-    cd "src/github.com/open-policy-agent/opa" do
-      system "go", "build", "-o", bin/"opa", "-installsuffix", "static",
-             "-ldflags",
-             "-X github.com/open-policy-agent/opa/version.Version=#{version}"
-      prefix.install_metafiles
-    end
+    system "go", "build", "-o", bin/"opa", "-trimpath", "-ldflags",
+                 "-X github.com/open-policy-agent/opa/version.Version=#{version}"
+    prefix.install_metafiles
   end
 
   test do
