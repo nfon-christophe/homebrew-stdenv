@@ -17,14 +17,14 @@ class Yarn < Formula
 
   def install
     libexec.install Dir["*"]
-    (bin / "yarn").write_env_script "#{libexec}/bin/yarn.js", :PREFIX => HOMEBREW_PREFIX, :NPM_CONFIG_PYTHON => "/usr/bin/python"
-    (bin / "yarnpkg").write_env_script "#{libexec}/bin/yarn.js", :PREFIX => HOMEBREW_PREFIX, :NPM_CONFIG_PYTHON => "/usr/bin/python"
+    (bin/"yarn").write_env_script "#{libexec}/bin/yarn.js", :PREFIX => HOMEBREW_PREFIX, :NPM_CONFIG_PYTHON => "/usr/bin/python"
+    (bin/"yarnpkg").write_env_script "#{libexec}/bin/yarn.js", :PREFIX => HOMEBREW_PREFIX, :NPM_CONFIG_PYTHON => "/usr/bin/python"
     inreplace "#{libexec}/package.json", '"installationMethod": "tar"', '"installationMethod": "homebrew"'
   end
 
   test do
-    (testpath / "package.json").write('{"name": "test"}')
-    system bin / "yarn", "add", "jquery"
-    system bin / "yarn", "add", "fsevents", "--build-from-source=true"
+    (testpath/"package.json").write('{"name": "test"}')
+    system bin/"yarn", "add", "jquery"
+    system bin/"yarn", "add", "fsevents", "--build-from-source=true"
   end
 end
