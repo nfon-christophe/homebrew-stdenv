@@ -4,8 +4,8 @@ require_relative "../std_requirements/std_go_requirement"
 class Opa < Formula
   desc "Open source, general-purpose policy engine"
   homepage "https://www.openpolicyagent.org"
-  url "https://github.com/open-policy-agent/opa/archive/v0.17.0.tar.gz"
-  sha256 "1c2fa73b022b7633b4f3f5a58b3e2647d98e88541eac0c684df73224a726579f"
+  url "https://github.com/open-policy-agent/opa/archive/v0.17.1.tar.gz"
+  sha256 "e17901b92d37e031f46b9f68180e7beed696b67de108a7192c902925607a978d"
 
   bottle do
     root_url "https://homebrew.bintray.com/bottles" # https://github.com/Homebrew/brew/issues/6059
