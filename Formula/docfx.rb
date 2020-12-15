@@ -10,7 +10,8 @@ class Docfx < Formula
   url "https://github.com/dotnet/docfx/releases/download/v2.56.6/docfx.zip"
   #sha256 "feaab69b369c55cd27f9f1a6c31c3279dd309ee61db030d93201c44fcbcd3672"
   #sha256 "4ed09c7e6dfed3a579a8a3d1678db270211064a1ffc884e865b7a74ad1adfb27"
-  sha256 "6b7bd06b1edbb922c020911551504a80c6ecba6cda93dbd882a5c78ad55cfbee"
+  #sha256 "6b7bd06b1edbb922c020911551504a80c6ecba6cda93dbd882a5c78ad55cfbee"
+  sha256 "1d5a205dd93e6a9fc457677fbe7bfca5507af3e1c702f644011b4b29d1a67d16"
 
   bottle :unneeded
 
